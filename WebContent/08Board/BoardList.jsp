@@ -1,10 +1,14 @@
-<%@page import="model.BoardDAO"%>
+<%@page import="model1.board.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 String drv = application.getInitParameter("JDBCDriver");
 String url = application.getInitParameter("ConnectionURL");
-BoardDAO dao = new BoardDAO(drv,url);
+String id = application.getInitParameter("Oracleid");
+String pass = application.getInitParameter("OraclePwd");
+
+/* BoardDAO dao = new BoardDAO(drv,url); */
+BoardDAO dao = new BoardDAO(application);
 %>
 <!DOCTYPE html>
 <html>
