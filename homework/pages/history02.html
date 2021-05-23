@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>/pages/history02.html</title>
+</head>
+<body>
+    <h2>history02- 회원가입</h2>
+
+    <h3>회원가입을 진행해 주세요</h3>
+    <!--
+        방문한 이력이 존재하는 경우 1페이지 뒤로 혹은 N페이지 뒤로도 설정할 수 있다.
+         -->
+    <p>
+        <a href="javascript:history.go(-1);">1page뒤로</a>
+        <br>
+        <a href="#" onclick="javascript:history.go(-2)">2page뒤로</a>
+    </p>
+    <!-- 
+        JS의 함수를 호출할 때
+            href에서는 반드시 javascript : 접두어를 사용해야 한다.
+            만약 없으면 함수호출문장을 URL로 인식하여 페이지 이동에 대한
+            오류가 발생하게 된다.
+
+            onclick과 같은 이벤트리스너(핸들러)에서는 javascript:를
+            생략할 수 있다.
+     -->
+</body>
+</html>

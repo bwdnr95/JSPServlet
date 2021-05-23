@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function openChild2(){
+            window.open("openChild2nd.html","child2","width=300,height=300,left=300,top=0");
+        }
+        /*
+        JS에서 CSS속성 제어하기
+            :CSS 속성중 -(하이픈)이 있는 경우 제거하고 다음 첫 문자를
+            대문자로 변경한다. 하이픈이 없는 경우 원형 그대로 사용하면 된다.
+            Ex) font-size =>fontSize
+                color => color
+        */
+        var openerText = function(){
+            opener.document.getElementById("btnFirst").type="text";
+            opener.document.getElementById("btnFirst").style.backgroundColor="red";
+        }
+        var openerButton = function(){
+            opener.document.getElementById("btnFirst").type = "button";
+            opener.document.getElementById("btnFirst").style.backgroundColor="blue";
+        }
+    </script>
+</head>
+<body>
+    <h2>openChild First 창</h2>
+    <p style="text-align: center;">
+        <button onclick="openChild2();">
+            팝업에서 팝업열기
+        </button>
+
+        <button onclick="openerText();">
+            부모창의 버튼을 text박스로 변경하기
+        </button>
+
+        <button onclick="openerButton();">
+            부모창의 버튼을 button으로 변경하기
+        </button>
+    </p>
+</body>
+</html>

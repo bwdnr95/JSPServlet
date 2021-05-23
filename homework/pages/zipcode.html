@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        /*
+        opener : 팝업창(자식창)을 띄워준 부모창으로 데이터를 보내거나
+            제어해야 할 때 사용하는 속성
+        */
+        function setZipcode(zip,addr){
+            //부모창으로 우편번호와 기본주소를 전송한다.
+            opener.document.getElementById("addr1").value = zip;
+            opener.document.getElementById("address1").value = addr;
+            //부모창의 상세주소 입력란으로 포커스를 이동한다.
+            opener.document.getElementById("address2").focus();
+            //현재창을 닫아준다.
+            self.close();
+        }
+        function zipClose(){
+            /*
+            self대신에 창의 참조변수명을 사용하면 다른 창을
+            닫을수도 있다.
+            */
+            alert("창을 닫습니다.");
+            self.close();
+        }
+    </script>
+</head>
+<body>
+    <h2>우편번호 검색하기</h2>
+    <table>
+        <colgroup>
+            <col width="20%"/>
+            <col width="*"/>
+        </colgroup>
+        <tr>
+            <th>우편번호</th>
+            <th>주소</th>
+        </tr>
+        <tr>
+            <td>11111</td>
+            <td>
+                <a href="javascript:setZipcode('11111','서울시 종로구')">서울지 종로구</a>
+            </td>
+        </tr>
+        <tr>
+            <td>22222</td>
+            <td>
+                <a href="javascript:setZipcode('22222','서울시 구로구')">서울지 구로구</a>
+            </td>
+        </tr>
+        <tr>
+            <td>33333</td>
+            <td>
+                <a href="javascript:setZipcode('33333','서울시 종로구')">서울지 금천구</a>
+            </td>
+        </tr>
+        <tr>
+            <td>44444</td>
+            <td>
+                <a href="javascript:setZipcode('44444','서울시 남대문구')">서울지 남대문구</a>
+            </td>
+        </tr>
+        <tr>
+            <td>55555</td>
+            <td>
+                <a href="javascript:setZipcode('55555','서울시 성북구')">서울지 성북구</a>
+            </td>
+        </tr>
+    </table>
+    <p style="text-align: center;"><button onclick="zipClose();">우편번호검색창닫기</button></p>
+</body>
+</html>
