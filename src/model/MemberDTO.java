@@ -39,5 +39,9 @@ public class MemberDTO {
 	public void setRegidate(java.sql.Date regidate) {
 		this.regidate = regidate;
 	}
+	@Override
+	public String toString() {
+		return "MemberDTO [id=" + id + ", pass=" + pass + ", name=" + name + ", regidate=" + regidate + "]";
+	}
 	
 }
