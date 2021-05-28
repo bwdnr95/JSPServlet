@@ -20,6 +20,17 @@ public class MemberDAO {
    ResultSet rs;
    Connection con;//커넥션 객체를 멤버변수로 선언하여 DAO내에서 공유
  
+   public void close() {
+		try {
+			if(rs!=null) rs.close();
+			if(psmt!=null) psmt.close();
+			if(con!=null) con.close();
+		}
+		catch(Exception e) {
+			System.out.println("Oracle 자원반납시 예외발생");
+			e.printStackTrace();
+		}
+	}
  
    //기본생성자를 통한 오라클 연결
 	public MemberDAO() {
