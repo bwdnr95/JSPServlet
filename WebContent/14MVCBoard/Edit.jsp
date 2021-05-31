@@ -65,7 +65,7 @@
 		<c:if test="${not empty dto.ofile }">
 			<img src="../Uploads/${dto.sfile }" style="width:100px" /><br />
 		</c:if>
-			<input type="file" name="ofile" /> 
+			 <input type="file" name="ofile" /> 
 		</td>
 	</tr>	
 	<tr>

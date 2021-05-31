@@ -69,5 +69,102 @@
     	</td>
     </tr>
  </table>
+ 
+ <h2>댓글쓰기</h2>
+<script>
+function commentValidate(f){
+	if(f.name.value==""){
+		alert("작성자를 입력하세요");
+		f.name.focus();
+		return false;
+	}
+	if(f.pass.value==""){
+		alert("비밀번호를 입력하세요");
+		f.pass.focus();
+		return false;
+	}
+	if(f.comments.value==""){
+		alert("댓글 내용을 입력하세요");
+		f.comments.focus();
+		return false;
+	}
+} 
+</script>
+<form name="commentFrm" method="post" action="./commentWrite.comm" onsubmit="return commentValidate(this);">
+<!--해당 게시물의 일련번호로 댓글 테이블의 참조키가 된다.  -->
+<input type="hidden" name="board_idx" value="${param.idx }" />
+<table border="1" width="90%">
+	<colgroup>
+		<col width="30%"/>
+		<col width="40%"/>
+		<col width="*"/>
+	</colgroup>
+	<tr>
+		<td>작성자 : <input type="text" name="name" size="10" /></td>
+		<td colspan="2">비밀번호 : <input type="password" name="pass" size="10" /></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<textarea name="comments" style="width:100%;height:70px;"></textarea>
+		</td>
+		<td><input type="submit" value="댓글쓰기" style="width:80px;height:77px;" /></td>
+	</tr>
+</table>
+ </form>
+ <h2>댓글목록</h2>
+ <script>
+ function commendEdit(idx, board_idx){
+	 window.open('./commentEdit.comm?idx='+idx+'&board_idx='+board_idx,'commentPop','top=0,left=0,width=700,height=300');
+	 
+ }
+ function commendDelete(idx, board_idx){
+	 window.open('./commentDelete.comm?idx='+idx+'&board_idx='+board_idx,'commentPop','top=0,left=0,width=700,height=300');
+ }
+ </script>
+ <!--
+ 	HTML5에서 지원하는 앵커(Ancher)기능으로 해당 페이지에서 특정
+ 	위치를 로드하고 싶을 때 아래와 같이 <a태그>에 name속성을 부여한다.
+ 	사용시에는 쿼리스트링 마지막에 #앵커명 형태로 사용하면 된다.
+   -->
+   
+ <a name="commentsList"></a>
+ 
+ <table border="1" width="90%">
+ 	<colgroup>
+ 		<col width="30%" />
+ 		<col width="40%"/>
+ 		<col width="*" />
+ 	</colgroup>
+ 	<c:choose>
+ 		<c:when test="${empty comments }">
+ 			<tr>
+ 				<td colspan="3" align="center">
+ 					등록된 댓글이 없습니다.
+ 				</td>
+ 			</tr>
+ 		</c:when>
+ 		<c:otherwise>
+ 			<c:forEach items="${comments }" var="row" varStatus="loop">
+ 				<tr>
+ 					<td>작성자 : ${row.name }</td>
+ 					<td>작성일 : ${row.postdate }</td>
+ 					<td>
+ 					<!--수정,삭제를 위해 전달되는 파라미터는 댓글의 일련번호,
+ 						해당 게시물의 일련번호 2개가 필요하다.  -->
+ 						<input type="button" value="수정"
+ 							onclick="commendEdit(${row.idx},${row.board_idx });"
+ 						 />
+ 						 <input type="button" value="삭제"
+ 							onclick="commendDelete(${row.idx},${row.board_idx });"
+ 						 />
+ 					</td>
+ 				</tr>
+ 				<tr>
+ 					<td colspan="3">${row.comments }</td>
+ 				</tr>
+ 			</c:forEach>
+ 		</c:otherwise>
+ 	</c:choose>
+ </table>
  </body>
 </html>

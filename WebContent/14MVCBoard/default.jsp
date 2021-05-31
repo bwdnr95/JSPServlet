@@ -12,4 +12,4 @@
 	<h2>보드스킨 게시판</h2>
 	<a href="../board_skin/boardlist.do">보드스킨 게시판 목록 바로가기</a>
 </body>
-</html>
+</html> 
